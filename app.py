@@ -61,8 +61,15 @@ def main():
         prediction = predict_bankruptcy(industrial_risk, management_risk, financial_flexibility, credibility,
                                         competitiveness, operating_risk)
         result = "Bankruptcy" if prediction == 1 else "Non-Bankruptcy"
+
+        # Styling based on prediction result
+        if result == "Bankruptcy":
+            label_style = 'background-color: rgba(171, 9, 31, 0.2); color: rgb(255, 75, 75); padding: 16px ;border-radius:5px ; font-weight:bold; border: 1px solid rgba(171, 9, 16, 0.2)'
+        else:
+            label_style = 'background-color: rgba(9, 171, 59, 0.2); color: rgb(33, 195, 84); padding: 16px ;border-radius:5px; font-weight:bold; border: 1px solid rgba(9, 171, 59, 0.2)'
+
         st.markdown("---")
-        st.success(f'Predicted Bankruptcy Status: {result}')
+        st.markdown(f'<p style="{label_style}"> Status : {result}</p>', unsafe_allow_html=True)
 
 if __name__ == '__main__':
     main()
